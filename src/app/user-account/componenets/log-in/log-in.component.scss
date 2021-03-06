@@ -1,0 +1,16 @@
+:host {
+    .header {
+        background-color: #103F6E;
+        color: white;
+        h1 {
+            font-size: 2rem;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+    .buttonSize {
+        display: inline-block;
+        font-size: 30px !important;
+    }
+}

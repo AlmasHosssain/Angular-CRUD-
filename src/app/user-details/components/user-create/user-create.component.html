@@ -1,0 +1,93 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+        <div class="card-header my-2" fxLayout="row" fxLayoutAlign="center center">
+            <h2 class="mt-2">{{formHeading? 'Create User' : 'Update User'}}</h2>
+        </div>
+        <div fxLayout="row">
+            <form [formGroup]="userData" (ngSubmit)="onSubmit()">
+                <div fxLayout="column" fxLayoutGap="8px" class="mx-3">
+                    <div>
+                        <mat-form-field appearance="standard" [style.width.px]="450">
+                            <mat-label>Enter your name</mat-label>
+                            <input formControlName="name" required matInput placeholder="Enter your name">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="standard" [style.width.px]="450">
+                            <mat-label>Enter your email</mat-label>
+                            <input formControlName="email" required matInput placeholder="Enter your email">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div formGroupName="passwordGroup" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="45px" fxLayoutGap.lt-sm="10px" class="mx-3">
+                    <div>
+                        <mat-form-field appearance="standard" [style.width.px]="200">
+                            <mat-label>Enter your password</mat-label>
+                            <input autocomplete="off" type="password" formControlName="password" required matInput placeholder="Enter your password">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayoutGap="1px">
+                        <mat-form-field appearance="standard" [style.width.px]="200">
+                            <mat-label>Retype your password</mat-label>
+                            <input type="password" formControlName="confirmPassword" required matInput placeholder="Enter your confirmPassword">
+                        </mat-form-field>
+                        <small *ngIf="getConfirmPassword()" class="text-danger">Password doesn't match</small>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <div class="ml-3">
+                        <button type="button" [style.height.px]="40" mat-raised-button (click)="addSkillBtn()">
+                  <mat-icon>add</mat-icon>ADD A SKILL
+                </button>
+                    </div>
+                </div>
+                <div fxLayout="column">
+                    <div formArrayName="skills" *ngFor="let skill of getSkillsControls(); let i = index">
+                        <div [formGroupName]="i" class="m-3">
+                            <mat-card>
+                                <div fxLayout="column" fxLayoutGap="5px">
+                                    <div fxLayout="row" fxLayoutGap="10px" class="mx-3">
+                                        <div>
+                                            <mat-form-field appearance="standard" [style.width.px]="180">
+                                                <mat-label>Enter Skill name</mat-label>
+                                                <input autocomplete="off" formControlName="skillName" required matInput placeholder="Enter skillName">
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field appearance="standard">
+                                                <mat-label>Experience Years</mat-label>
+                                                <mat-select required formControlName="experienceInYears">
+                                                    <mat-option *ngFor="let year of experienceYear" [value]="year">
+                                                        {{year}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div *ngIf="getSkillsControls().length>1">
+                                            <button (click)="removeSkillBtn(i)" type="button" mat-mini-fab color="warn">
+                                        <mat-icon>clear</mat-icon>
+                                      </button>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row" class="mx-3">
+                                        <p class="mr-1"><b>Proficiency:</b></p>
+                                        <div>
+                                            <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="proficiency">
+                                                <mat-radio-button required autocomplete="false" class="mr-2" *ngFor="let status of proficiency" [value]="status">
+                                                    {{status}}
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-3" fxLayout="row" fxLayoutAlign="start">
+                    <button color="accent" mat-raised-button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </mat-card>
+</div>

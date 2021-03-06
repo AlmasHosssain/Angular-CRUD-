@@ -1,0 +1,104 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="mt-5">
+    <mat-card class="mt-5">
+        <div class="mx-4" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="50px">
+            <h1 class="mt-2">Registration Here..</h1>
+            <span>
+            <button type="button" mat-icon-button color="primary">
+              <mat-icon>
+                forward_to_inbox
+              </mat-icon>
+          </button>
+          </span>
+        </div>
+        <form [formGroup]="registration" (ngSubmit)="onSubmit()">
+            <div class="mx-4" fxLayout="row" fxLayoutAlign="space-between">
+                <div fxLayout="column">
+                    <div>
+                        <mat-form-field appearance="standard">
+                            <mat-label>Enter your name</mat-label>
+                            <input formControlName="name" required matInput placeholder="Enter your name">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="standard">
+                            <mat-label>Enter your email</mat-label>
+                            <input formControlName="email" required matInput placeholder="Enter your email">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="standard" [style.width.px]="310">
+                            <mat-label>Enter your phone number</mat-label>
+                            <input formControlName="phoneNumber" required matInput placeholder="Enter your phone number">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="column" formGroupName="passwordGroup">
+                    <div>
+                        <mat-form-field appearance="standard">
+                            <mat-label>Enter your password</mat-label>
+                            <input formControlName="password" required matInput placeholder="Enter your password">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="standard">
+                            <mat-label>Retype your password</mat-label>
+                            <input formControlName="confirmPassword" required matInput placeholder="Retype your password">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="ml-4 mt-3" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="250px">
+                <p>Already have a account?<span>
+                <a class="ml-2" [routerLink]="['/user/login']" routerLinkActive="router-link-active" >Login</a>
+              </span></p>
+                <div class="mb-2">
+                    <button mat-fab color="accent" aria-label="Example icon button with a delete icon">
+                <mat-icon>send</mat-icon>
+              </button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+    <mat-card class="mt-5 besideCard">
+        <div class="my-4" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="50px">
+            <h1>Welcome..</h1>
+            <button mat-icon-button>
+              <mat-icon>sentiment_very_satisfied</mat-icon>
+            </button>
+        </div>
+        <div fxLayout="column" class="mx-2 mb-5">
+            <div fxLayout="row">
+                <h2 class="mr-2 pointer" [routerLink]="['/']" routerLinkActive="router-link-active" mat-icon-button>
+                    <mat-icon>house_siding</mat-icon>
+                </h2>
+                <span class="mt-2">Go the our home page</span>
+            </div>
+            <div fxLayout="row">
+                <h2 class="mr-2 pointer" [routerLink]="['/']" routerLinkActive="router-link-active" mat-icon-button>
+                    <mat-icon>add_shopping_cart</mat-icon>
+                </h2>
+                <span class="mt-2">Continue your shopping</span>
+            </div>
+            <div fxLayout="row">
+                <h2 class="mr-2 pointer" [routerLink]="['/']" routerLinkActive="router-link-active" mat-icon-button>
+                    <mat-icon>phonelink_lock</mat-icon>
+                </h2>
+                <span class="mt-2">Keep your phone safe during<br> shopping.</span>
+            </div>
+        </div>
+        <div fxLayout="column" class="ml-2 my-3">
+            <p>Or SignUp with:</p>
+            <div fxLayout="row" fxLayoutGap="13px">
+                <button class="buttonSize" mat-icon-button>
+                <i class="fab fa-linkedin"></i>
+              </button>
+                <button class="buttonSize mx-3" mat-icon-button>
+                <i class="fab fa-facebook-square"></i>
+              </button>
+                <button class="buttonSize ml-3" mat-icon-button>
+                <i class="fab fa-twitter"></i>
+              </button>
+            </div>
+        </div>
+    </mat-card>
+</div>

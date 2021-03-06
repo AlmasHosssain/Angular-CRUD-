@@ -1,0 +1,21 @@
+a {
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.besideCard {
+    background-color: #103F6E;
+    color: white;
+    h1 {
+        font-size: 2rem;
+    }
+    .pointer {
+        cursor: pointer;
+    }
+    .buttonSize {
+        font-size: 2rem !important;
+        i:hover {
+            color: rgb(250, 75, 134);
+        }
+    }
+}

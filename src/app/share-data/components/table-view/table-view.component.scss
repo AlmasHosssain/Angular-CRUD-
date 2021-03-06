@@ -1,0 +1,26 @@
+.mat-card {
+    width: 50%;
+    position: relative;
+    margin-top: 7%;
+}
+
+table {
+    width: 100%;
+    thead {
+        tr {
+            th {
+                width: 100%;
+                text-align: center !important;
+            }
+        }
+    }
+}
+
+td {
+    background-color: rgb(248, 247, 247);
+    text-align: center !important;
+}
+
+.action {
+    cursor: pointer;
+}

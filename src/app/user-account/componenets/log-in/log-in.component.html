@@ -1,0 +1,65 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+        <div class="header my-2" fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-header>
+                <h1 class="my-2">Sign In</h1>
+            </mat-card-header>
+        </div>
+        <div fxLayout="row">
+            <form [formGroup]="login" (ngSubmit)="onSubmit()">
+                <div fxLayout="column" class="mx-5">
+                    <div>
+                        <mat-form-field appearance="standard" [style.width.px]="500">
+                            <mat-label>Enter your email</mat-label>
+                            <input formControlName="email" required matInput placeholder="Enter your email">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="standard" [style.width.px]="500">
+                            <mat-label>Enter your password</mat-label>
+                            <input formControlName="password" required matInput placeholder="Enter your password">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxLayoutGap="50px" fxLayoutGap.lt-sm="10px" class="my-4">
+                        <div class="mt-2">
+                            <mat-checkbox class="example-margin" formControlName="check">Remember Me</mat-checkbox>
+                        </div>
+                        <div>
+                            <a [routerLink]="['/']" routerLinkActive="router-link-active">Forget Password?</a>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <div>
+                            <button [style.width.px]="500" mat-stroked-button color="primary"><b>Sing In</b></button>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxLayoutGap="50px" fxLayoutGap.lt-sm="10px" class="mt-5">
+                        <div>
+                            Not a member?
+                        </div>
+                        <div>
+                            <a [routerLink]="['/user/registration']" routerLinkActive="router-link-active">Register Here</a>
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" fxLayoutAlign="center center" class="my-4">
+                        <div>
+                            <span>Or Sign In With</span>
+                        </div>
+                        <div fxLayout="row">
+                            <button color="warn" class="buttonSize" mat-icon-button>
+                          <i class="fab fa-linkedin"></i>
+                        </button>
+                            <button color="primary" class="buttonSize mx-3" mat-icon-button>
+                          <i class="fab fa-facebook-square"></i>
+                        </button>
+                            <button color="accent" class="buttonSize" mat-icon-button>
+                          <i class="fab fa-twitter"></i>
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </mat-card>
+</div>

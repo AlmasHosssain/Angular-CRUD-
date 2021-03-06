@@ -1,0 +1,46 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+        <div fxLayout="row">
+            <div>
+                <mat-form-field appearance="standard" style="width: 370px;">
+                    <mat-label>Search Here</mat-label>
+                    <input [(ngModel)]="nameSearch" autocomplete="off" matInput placeholder="Search by name.." #input>
+                </mat-form-field>
+            </div>
+            <div>
+                <div class="m-3">
+                    <button type="button" [routerLink]="['/']" routerLinkActive="router-link-active" [style.height.px]="40" [style.width.px]="210" mat-raised-button>
+          <mat-icon>add</mat-icon>ADD A SKILL
+        </button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-success table-striped">
+            <thead>
+                <tr>
+                    <th *ngFor="let item of columnHeading">{{item}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users | filter : nameSearch">
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+
+                    <td>
+                        <div fxLayout="row">
+                            <button mat-icon-button (click)="updateTask(user)">
+                          <mat-icon>edit</mat-icon>
+                        </button>
+                            <button color="primary" mat-icon-button (click)="viewDetails(user)">
+                          <mat-icon>visibility</mat-icon>
+                        </button>
+                            <button color="accent" mat-icon-button (click)="deleteUser(user)">
+                          <mat-icon>delete_forever</mat-icon>
+                        </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card>
+</div>
