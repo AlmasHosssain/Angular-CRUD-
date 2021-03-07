@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
-import { IUser } from '../../models/IUser';
+import { IUser } from './../../models/IUser';
+import { Router } from '@angular/router';
 import { UserDetailsService } from './../../service/user-details-service.service';
 
 @Component({
@@ -17,11 +18,22 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userDetailsService : UserDetailsService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
     this.userDetailsService.viewAllUser().subscribe((data)=>{
       this.userArray = data
+    })
+  }
+
+  getUpdateUser(user : IUser){
+    this.router.navigate(['/user',user.id])
+  }
+
+  getDeleteUser(user : IUser){
+    this.userDetailsService.removerUser(user).subscribe(data => {
+      this.userArray = data;
     })
   }
 }

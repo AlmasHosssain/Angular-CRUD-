@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { IUser } from './../../../user-details/models/IUser';
-import { Router } from '@angular/router';
 import { ShareService } from './../../service/share.service';
 import { UserDetailsService } from './../../../user-details/service/user-details-service.service';
 import { ViewSingleUserComponent } from 'src/app/user-details/components/view-single-user/view-single-user.component';
@@ -18,11 +17,11 @@ export class TableViewComponent implements OnInit {
   @Input() users!: any[];
   @Input() url!: string;
   nameSearch : string = "";
+  @Output() public updateUser = new EventEmitter<IUser>();
+  @Output() public deleteUser = new EventEmitter<IUser>();
 
   constructor(
     private matDialog: MatDialog,
-    private router: Router,
-    private userDetailsService: UserDetailsService,
     private shareService: ShareService
   ) { }
 
@@ -41,19 +40,15 @@ export class TableViewComponent implements OnInit {
     })
   }
 
-  updateTask(user: IUser) {
-    this.router.navigate(['/' + this.url, user.id])
+  updateUserFn(user: IUser) {
+    this.updateUser.emit(user);
   }
 
-  deleteUser(user: IUser) {
+  deleteUserFn(user: IUser) {
     this.shareService.openConfirmDialog('Are you sure to delete this record?')
       .afterClosed().subscribe(res => {
         if (res) {
-          if (this.url == "user") {
-            this.userDetailsService.removerUser(user).subscribe(data => {
-              this.users = data;
-            })
-          }
+          this.deleteUser.emit(user)
         }
       })
   }
