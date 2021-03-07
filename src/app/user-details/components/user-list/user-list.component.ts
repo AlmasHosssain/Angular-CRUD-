@@ -14,7 +14,6 @@ export class UserListComponent implements OnInit {
 
   userArray! : IUser[];
   displayedColumns: Array<string>= ['Name', 'Email', 'Action']
-  editUrl: string = "user"
 
   constructor(
     private userDetailsService : UserDetailsService,

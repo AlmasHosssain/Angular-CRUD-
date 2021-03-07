@@ -15,7 +15,6 @@ export class TableViewComponent implements OnInit {
 
   @Input() columnHeading!: Array<string>;
   @Input() users!: any[];
-  @Input() url!: string;
   nameSearch : string = "";
   @Output() public updateUser = new EventEmitter<IUser>();
   @Output() public deleteUser = new EventEmitter<IUser>();
